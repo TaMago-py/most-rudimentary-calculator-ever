@@ -1,31 +1,31 @@
-import interpretador as itp
-from utilidades import texto
+import interpreter as itp
+from utils import typewriter
 
 print("\033[H\033[J")
-texto("calculadora\n\n", 0.05)
-texto('inserte "salir" para', 0.05)
-texto("... ", 0.5)
-texto("salir\n\n", 0.05)
+typewriter("calculator\n\n", 0.05)
+typewriter('Type "exit" to', 0.05)
+typewriter("... ", 0.5)
+typewriter("Exit\n\n", 0.05)
 
 while True:
 
-    expresion = input("inserte expresion: ")
+    expression = input("Enter expression: ")
     print()
 
-    if expresion.strip().lower() == "salir":
-        texto("saliendo", 0.05)
-        texto("... ", 0.5)
-        texto("este tiempo de carga es falso btw\n\n", 0.05)
+    if expression.strip().lower() == "exit":
+        typewriter("Shutting down", 0.05)
+        typewriter("... ", 0.5)
+        typewriter("This loading screen is fake btw\n\n", 0.05)
         break  # hola dani
 
     try:
-        resultado = itp.enlistar(expresion)
-        resultado = itp.parentesis(resultado)
+        result = itp.transform(expression)
+        result = itp.parentheses(result)
 
-        print(f"resultado: {resultado}\n")
+        print(f"Result: {result}\n")
 
     except ZeroDivisionError:
-        texto("no puedes dividir entre cero\n\n", 0.05)
+        typewriter("Error: You can't divide by zero\n\n", 0.05)
 
     except Exception:
-        texto("debes introducir una expresion valida\n\n", 0.05)
+        typewriter("Error: Please enter a valid expression\n\n", 0.05)
